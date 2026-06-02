@@ -21,6 +21,24 @@ Progress is stored locally per device. If the same person uses both phone and la
 
 Use the app's Backup and Restore buttons to move progress between devices when needed.
 
+## 100-Day Spreadsheet Log
+
+Use `100-declarations-log-template.xlsx` as the simple spreadsheet database.
+
+Daily workflow:
+
+1. Open the app.
+2. Use it normally throughout the day.
+3. Tap `CSV`.
+4. Import or paste the CSV rows into the `Declaration_Log` sheet.
+
+The workbook includes:
+
+- `Declaration_Log` for raw app events.
+- `Declarations` as the master list of all 100 declarations.
+- `Daily_Summary` for the 100-day view.
+- `Section_Summary` for category totals.
+
 ## Quick Local Test
 
 From this folder, run a simple static server:
@@ -38,3 +56,5 @@ Then open the shown local URL. For phone testing on the same Wi-Fi, use the lapt
 - `manifest.webmanifest`
 - `icon.svg`
 - `sw.js`
+- `100-declarations-log-template.xlsx`
+- `declaration-log-import-template.csv`
