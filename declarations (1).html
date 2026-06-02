@@ -646,7 +646,7 @@ h1 em {
   padding: 9px 14px;
   padding-bottom: calc(9px + var(--safe-bottom));
   display: grid;
-  grid-template-columns: 0.8fr 1.6fr 0.9fr 0.9fr 0.8fr;
+  grid-template-columns: 0.75fr 1.45fr 0.75fr 0.85fr 0.85fr 0.75fr;
   gap: 8px;
   align-items: center;
 }
@@ -756,7 +756,7 @@ h1 em {
   .focus-card { align-items: flex-start; }
   .focus-kicker { padding-top: 2px; }
   .bottom-inner {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 6px;
     padding-top: 7px;
   }
@@ -862,6 +862,7 @@ h1 em {
   <div class="bottom-inner">
     <button class="btn-reset" onclick="declareNext()">Next</button>
     <button class="btn-all" onclick="markAll()">✦ Mark All Declared</button>
+    <button class="btn-reset" onclick="exportLogCsv()">CSV</button>
     <button class="btn-reset" onclick="exportProgress()">Backup</button>
     <button class="btn-reset" onclick="importProgress()">Restore</button>
     <button class="btn-reset" onclick="resetAll()">Reset</button>
@@ -1005,6 +1006,7 @@ const D = [
 
 let done = new Set(JSON.parse(localStorage.getItem('coz_done') || '[]'));
 let history = JSON.parse(localStorage.getItem('coz_history') || '{}');
+let declarationLog = JSON.parse(localStorage.getItem('coz_log') || '[]');
 let activeSection = 'all';
 let activeFilter = 'all';
 let searchTerm = '';
@@ -1029,20 +1031,50 @@ function todayKey() {
 function save() {
   localStorage.setItem('coz_done', JSON.stringify([...done]));
   localStorage.setItem('coz_history', JSON.stringify(history));
+  localStorage.setItem('coz_log', JSON.stringify(declarationLog));
 }
 
-function recordToday(i) {
+function nowParts() {
+  const d = new Date();
+  return {
+    date: todayKey(),
+    time: d.toTimeString().slice(0, 8),
+    timestamp: d.toISOString()
+  };
+}
+
+function addLogEntry(i, action, source) {
+  const d = D[i];
+  const now = nowParts();
+  declarationLog.push({
+    event_id: `${now.timestamp}-${i}-${action}`,
+    date: now.date,
+    time: now.time,
+    timestamp: now.timestamp,
+    declaration_id: i + 1,
+    section_key: d.s,
+    section: SECTION_LABELS[d.s],
+    reference: d.r,
+    action,
+    source,
+    declaration: d.t
+  });
+}
+
+function recordToday(i, source = 'manual') {
   const key = todayKey();
   const list = new Set(history[key] || []);
   list.add(i);
   history[key] = [...list].sort((a,b) => a - b);
+  addLogEntry(i, 'declared', source);
 }
 
-function unrecordToday(i) {
+function unrecordToday(i, source = 'manual') {
   const key = todayKey();
   if (!history[key]) return;
   history[key] = history[key].filter(x => x !== i);
   if (!history[key].length) delete history[key];
+  addLogEntry(i, 'undone', source);
 }
 
 function getStreak() {
@@ -1105,17 +1137,17 @@ function toggle(i, e) {
   if(e) e.stopPropagation();
   if (done.has(i)) {
     done.delete(i);
-    unrecordToday(i);
+    unrecordToday(i, 'card');
   } else {
     done.add(i);
-    recordToday(i);
+    recordToday(i, 'card');
   }
   save(); render();
 }
 
 function markAll() {
   D.forEach((_,i) => {
-    if (!done.has(i)) recordToday(i);
+    if (!done.has(i)) recordToday(i, 'mark_all');
     done.add(i);
   });
   save(); render();
@@ -1125,7 +1157,7 @@ function declareNext() {
   const next = getFilteredItems().find(d => !done.has(d.i)) || D.map((d,i)=>({...d,i})).find(d => !done.has(d.i));
   if (!next) return;
   done.add(next.i);
-  recordToday(next.i);
+  recordToday(next.i, 'next');
   save(); render();
   scrollToDeclarations();
 }
@@ -1134,6 +1166,7 @@ function resetAll() {
   if(!confirm('Reset all completed declarations and tracker history?')) return;
   done.clear();
   history = {};
+  declarationLog = [];
   save(); render();
 }
 
@@ -1208,7 +1241,7 @@ function closeModal() {
 function declareModal() {
   if (openIndex !== null) {
     done.add(openIndex);
-    recordToday(openIndex);
+    recordToday(openIndex, 'modal');
     save(); render();
   }
   closeModal();
@@ -1216,7 +1249,7 @@ function declareModal() {
 function undeclareModal() {
   if (openIndex !== null) {
     done.delete(openIndex);
-    unrecordToday(openIndex);
+    unrecordToday(openIndex, 'modal');
     save(); render();
   }
   closeModal();
@@ -1226,7 +1259,8 @@ function exportProgress() {
   const payload = JSON.stringify({
     exportedAt: new Date().toISOString(),
     done: [...done],
-    history
+    history,
+    declarationLog
   });
   navigator.clipboard?.writeText(payload);
   prompt('Progress backup JSON:', payload);
@@ -1239,10 +1273,46 @@ function importProgress() {
     const parsed = JSON.parse(raw);
     done = new Set(Array.isArray(parsed.done) ? parsed.done.filter(n => Number.isInteger(n) && n >= 0 && n < D.length) : []);
     history = parsed.history && typeof parsed.history === 'object' ? parsed.history : {};
+    declarationLog = Array.isArray(parsed.declarationLog) ? parsed.declarationLog : [];
     save(); render();
   } catch {
     alert('That backup could not be read.');
   }
+}
+
+function csvEscape(value) {
+  const text = value === null || value === undefined ? '' : String(value);
+  return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+}
+
+function exportLogCsv() {
+  const headers = ['event_id','date','time','timestamp','declaration_id','section_key','section','reference','action','source','declaration'];
+  const rows = declarationLog.length ? declarationLog : [...done].sort((a,b)=>a-b).map(i => {
+    const d = D[i];
+    return {
+      event_id: `current-${i + 1}`,
+      date: '',
+      time: '',
+      timestamp: '',
+      declaration_id: i + 1,
+      section_key: d.s,
+      section: SECTION_LABELS[d.s],
+      reference: d.r,
+      action: 'declared',
+      source: 'current_state',
+      declaration: d.t
+    };
+  });
+  const csv = [headers.join(','), ...rows.map(row => headers.map(h => csvEscape(row[h])).join(','))].join('\n');
+  const blob = new Blob([csv], {type: 'text/csv;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `declaration-log-${todayKey()}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
 }
 
 function render() {
