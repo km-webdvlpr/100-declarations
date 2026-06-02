@@ -1,4 +1,4 @@
-const CACHE_NAME = 'daily-declarations-v1';
+const CACHE_NAME = 'daily-declarations-v2';
 const APP_SHELL = [
   './',
   './index.html',
