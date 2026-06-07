@@ -3,38 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0a0c10">
+<meta name="theme-color" content="#047857">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Declarations">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="application-name" content="Daily Declarations">
-<title>City of Zion — Daily Declarations</title>
+<title>City of Zion - Daily Declarations</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0a0c10;
-  --surface: #111318;
-  --card: #161a23;
-  --card-hover: #1c2130;
-  --border: #222736;
-  --border-bright: #2e3650;
-  --gold: #c9a84c;
-  --gold-light: #e8c97a;
-  --gold-pale: #f5e4b0;
-  --gold-dim: rgba(201,168,76,0.12);
-  --gold-glow: rgba(201,168,76,0.25);
-  --text: #ede9df;
-  --text-dim: #7a7a8a;
-  --text-mid: #a8a8b8;
-  --green: #5a9e7c;
-  --green-dim: rgba(90,158,124,0.12);
-  --green-border: rgba(90,158,124,0.28);
+  color-scheme: light dark;
+  --bg: #f4fbf7;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --card-hover: #ecfdf5;
+  --border: #cfe7dc;
+  --border-bright: #9bd3bd;
+  --gold: #047857;
+  --gold-light: #059669;
+  --gold-pale: #34d399;
+  --gold-dim: rgba(4,120,87,0.12);
+  --gold-glow: rgba(4,120,87,0.24);
+  --text: #10231b;
+  --text-dim: #52685f;
+  --text-mid: #385249;
+  --green: #047857;
+  --green-dim: rgba(4,120,87,0.11);
+  --green-border: rgba(4,120,87,0.28);
   --radius: 14px;
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --bottom-bar-height: 92px;
+}
+
+:root[data-theme="dark"] {
+  --bg: #06120e;
+  --surface: #0c1b15;
+  --card: #10251d;
+  --card-hover: #143126;
+  --border: #1d3f32;
+  --border-bright: #2f6f56;
+  --gold: #34d399;
+  --gold-light: #6ee7b7;
+  --gold-pale: #a7f3d0;
+  --gold-dim: rgba(52,211,153,0.13);
+  --gold-glow: rgba(52,211,153,0.28);
+  --text: #eefdf6;
+  --text-dim: #a7c5b8;
+  --text-mid: #c8e6da;
+  --green: #34d399;
+  --green-dim: rgba(52,211,153,0.14);
+  --green-border: rgba(52,211,153,0.32);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -46,12 +67,13 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Nunito', sans-serif;
+  font-size: 16px;
   min-height: 100vh;
   overflow-x: hidden;
 }
 body.modal-open { overflow: hidden; }
 
-/* ── STARFIELD BG ── */
+/* -- STARFIELD BG -- */
 body::before {
   content: '';
   position: fixed; inset: 0;
@@ -70,11 +92,11 @@ body::before {
   position: relative; z-index: 1;
 }
 
-/* ── HEADER ── */
+/* -- HEADER -- */
 header {
   text-align: center;
   padding: 32px 0 10px;
-  background: linear-gradient(to bottom, rgba(10,12,16,0.96), rgba(10,12,16,0.72) 88%, transparent 100%);
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 96%, transparent), color-mix(in srgb, var(--bg) 72%, transparent) 88%, transparent 100%);
 }
 
 .logo-wrap {
@@ -96,12 +118,12 @@ header {
 .logo-img {
   width: 64px;
   height: auto;
-  filter: drop-shadow(0 0 12px rgba(201,168,76,0.35)) drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+  filter: drop-shadow(0 0 12px var(--gold-glow)) drop-shadow(0 2px 4px rgba(0,0,0,0.35));
   position: relative; z-index: 1;
   transition: filter 0.3s;
 }
 .logo-img:hover {
-  filter: drop-shadow(0 0 20px rgba(201,168,76,0.55)) drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+  filter: drop-shadow(0 0 20px var(--gold-glow)) drop-shadow(0 2px 4px rgba(0,0,0,0.35));
 }
 
 .header-eyebrow {
@@ -143,7 +165,7 @@ h1 em {
   text-align: left;
 }
 
-/* ── PROGRESS ── */
+/* -- PROGRESS -- */
 .progress-wrap {
   margin: 14px 0 3px;
   background: var(--border);
@@ -285,7 +307,7 @@ h1 em {
   line-height: 1.6;
 }
 
-/* ── TABS ── */
+/* -- TABS -- */
 .tabs-wrap {
   position: relative;
   margin: 10px -14px 0;
@@ -323,7 +345,7 @@ h1 em {
   font-weight: 500;
 }
 
-/* ── COMPLETE BANNER ── */
+/* -- COMPLETE BANNER -- */
 .complete-banner {
   display: none;
   text-align: center;
@@ -339,7 +361,7 @@ h1 em {
 }
 .complete-banner.show { display: block; }
 
-/* ── SECTION HEADING ── */
+/* -- SECTION HEADING -- */
 .section-heading {
   margin: 20px 0 8px;
   display: flex;
@@ -367,7 +389,7 @@ h1 em {
 }
 .section-line { flex: 1; height: 1px; background: var(--border); }
 
-/* ── DECLARATION CARD ── */
+/* -- DECLARATION CARD -- */
 .decl-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -416,8 +438,8 @@ h1 em {
 }
 .decl-body { flex: 1; min-width: 0; }
 .decl-text {
-  font-size: 13.5px;
-  line-height: 1.55;
+  font-size: 15px;
+  line-height: 1.6;
   color: var(--text);
   font-weight: 700;
   margin-bottom: 4px;
@@ -454,7 +476,7 @@ h1 em {
   font-size: 12px;
 }
 
-/* ── MODAL ── */
+/* -- MODAL -- */
 .modal-overlay {
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.9);
@@ -539,10 +561,10 @@ h1 em {
 .arrow-btn:disabled { opacity: 0.25; cursor: default; }
 
 .modal-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(21px, 5vw, 28px);
-  font-weight: 600;
-  line-height: 1.4;
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(23px, 5vw, 30px);
+  font-weight: 800;
+  line-height: 1.42;
   color: var(--text);
   margin-bottom: 16px;
 }
@@ -589,10 +611,10 @@ h1 em {
   opacity: 0.65;
 }
 .scripture-text {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Nunito', sans-serif;
   font-style: italic;
-  font-size: 15.5px;
-  line-height: 1.78;
+  font-size: 16px;
+  line-height: 1.75;
   color: var(--text-mid);
 }
 
@@ -631,11 +653,11 @@ h1 em {
 }
 .btn-close:hover { color: var(--text); border-color: var(--text-dim); }
 
-/* ── BOTTOM BAR ── */
+/* -- BOTTOM BAR -- */
 .bottom-outer {
   position: fixed; bottom: 0; left: 0; right: 0;
   z-index: 150;
-  background: rgba(10,12,16,0.97);
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid var(--border-bright);
@@ -646,7 +668,7 @@ h1 em {
   padding: 9px 14px;
   padding-bottom: calc(9px + var(--safe-bottom));
   display: grid;
-  grid-template-columns: 0.75fr 1.45fr 0.75fr 0.85fr 0.85fr 0.75fr;
+  grid-template-columns: 0.75fr 1.45fr 0.75fr 0.75fr 0.75fr;
   gap: 8px;
   align-items: center;
 }
@@ -680,8 +702,12 @@ h1 em {
   min-width: 0;
 }
 .btn-reset:hover { color: var(--text); border-color: var(--text-mid); }
+.theme-btn {
+  border-color: var(--green-border);
+  color: var(--green);
+}
 
-/* ── CLOSING PRAYER ── */
+/* -- CLOSING PRAYER -- */
 .prayer-card {
   background: linear-gradient(160deg, rgba(201,168,76,0.06) 0%, rgba(74,124,158,0.04) 100%);
   border: 1px solid rgba(201,168,76,0.2);
@@ -735,7 +761,7 @@ h1 em {
   opacity: 0.8;
 }
 
-/* ── ANIMATIONS ── */
+/* -- ANIMATIONS -- */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -762,10 +788,10 @@ h1 em {
   }
   .btn-all { grid-column: 1 / -1; order: -1; }
   .btn-reset { padding-left: 6px; padding-right: 6px; font-size: 11.5px; }
-  .decl-text { font-size: 13px; }
+  .decl-text { font-size: 15px; }
   .decl-card { padding: 13px 12px; gap: 9px; }
-  .modal-text { font-size: 20px; }
-  .scripture-text { font-size: 14.5px; }
+  .modal-text { font-size: 22px; }
+  .scripture-text { font-size: 15.5px; }
   h1 { font-size: 17px; }
 }
 
@@ -790,7 +816,7 @@ h1 em {
     <div class="header-eyebrow">City of Zion</div>
     <h1>Daily <em>Declarations</em></h1>
     <div class="anchor-verse">
-      "Seek first the Kingdom of God and His righteousness, and all these things shall be added unto you." — Matthew 6:33
+      "Seek first the Kingdom of God and His righteousness, and all these things shall be added unto you." - Matthew 6:33
     </div>
 
     <div class="progress-label" style="margin-top:13px">
@@ -847,24 +873,23 @@ h1 em {
     </div>
   </header>
 
-  <div class="complete-banner" id="completeBanner">✦ All 100 declarations spoken. Well done, faithful steward. ✦</div>
+  <div class="complete-banner" id="completeBanner">* All 100 declarations spoken. Well done, faithful steward. *</div>
   <div id="declarationList"></div>
 
   <div class="prayer-card">
     <img class="prayer-logo" src="data:image/png;base64,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" alt="City of Zion">
     <h3>Closing Declaration</h3>
     <p>Father, in the name of Jesus Christ, I declare that this is a season of growth, discipline, wisdom, favour, and stewardship. I will learn quickly, work faithfully, love deeply, forgive freely, and walk humbly before You. The work of my hands is blessed. My mind is sharp. My body is growing stronger. My finances are under Your lordship. My relationships are being healed. My future marriage is in Your hands. My studies will be completed successfully. My influence will grow for Your glory. I will not be distracted, discouraged, or defeated. I am becoming the man You created me to be.</p>
-    <div class="prayer-amen">In Jesus' Name — Amen</div>
+    <div class="prayer-amen">In Jesus' Name - Amen</div>
   </div>
 </div>
 
 <div class="bottom-outer">
   <div class="bottom-inner">
     <button class="btn-reset" onclick="declareNext()">Next</button>
-    <button class="btn-all" onclick="markAll()">✦ Mark All Declared</button>
+    <button class="btn-all" onclick="markAll()">* Mark All Declared</button>
     <button class="btn-reset" onclick="exportLogCsv()">CSV</button>
-    <button class="btn-reset" onclick="exportProgress()">Backup</button>
-    <button class="btn-reset" onclick="importProgress()">Restore</button>
+    <button class="btn-reset theme-btn" id="themeToggle" onclick="toggleTheme()">Night</button>
     <button class="btn-reset" onclick="resetAll()">Reset</button>
   </div>
 </div>
@@ -906,14 +931,14 @@ const D = [
   {s:"purpose",t:"God surrounds me with wise mentors, teachers, and guides who sharpen me for my calling.",r:"Proverbs 27:17",v:"As iron sharpens iron, so one person sharpens another."},
   {s:"purpose",t:"I grow daily in wisdom, knowledge, and understanding.",r:"Proverbs 4:7",v:"The beginning of wisdom is this: Get wisdom. Though it cost all you have, get understanding."},
   {s:"purpose",t:"The Holy Spirit teaches me what I need to know and reminds me of what I have learned.",r:"John 14:26",v:"But the Advocate, the Holy Spirit, whom the Father will send in my name, will teach you all things and will remind you of everything I have said to you."},
-  {s:"purpose",t:"I complete every course, certification, and study commitment with excellence.",r:"Philippians 1:6",v:"Being confident of this, that he who began a good work in you will carry it on to completion until the day of Christ Jesus."},
+  {s:"purpose",t:"God is completing His good work in me, and He gives me grace to finish the commitments He has placed before me.",r:"Philippians 1:6",v:"Being confident of this, that he who began a good work in you will carry it on to completion until the day of Christ Jesus."},
   {s:"purpose",t:"I am disciplined, focused, and consistent in my learning.",r:"Proverbs 21:5",v:"The plans of the diligent lead to profit as surely as haste leads to poverty."},
   {s:"purpose",t:"God gives me the grace to finish what I start.",r:"Ecclesiastes 7:8",v:"The end of a matter is better than its beginning, and patience is better than pride."},
-  {s:"purpose",t:"I am becoming the professional God has called me to be.",r:"Romans 12:2",v:"Do not conform to the pattern of this world, but be transformed by the renewing of your mind. Then you will be able to test and approve what God's will is — his good, pleasing and perfect will."},
+  {s:"purpose",t:"The Lord instructs me, guides me, and counsels me in the way I should go.",r:"Psalm 32:8",v:"I will instruct you and teach you in the way you should go; I will counsel you with my loving eye on you."},
   {s:"purpose",t:"The Lord increases my influence for His glory and for the benefit of others.",r:"Matthew 5:16",v:"In the same way, let your light shine before others, that they may see your good deeds and glorify your Father in heaven."},
   {s:"purpose",t:"My gifts make room for me and bring me before great people.",r:"Proverbs 18:16",v:"A gift opens the way and ushers the giver into the presence of the great."},
-  {s:"purpose",t:"I walk in the specific calling God has placed on my life — I will not drift from it.",r:"2 Timothy 1:9",v:"He has saved us and called us to a holy life — not because of anything we have done but because of his own purpose and grace."},
-  {s:"purpose",t:"God has appointed me for a purpose that was settled before I was born.",r:"Jeremiah 1:5",v:"Before I formed you in the womb I knew you, before you were born I set you apart; I appointed you as a prophet to the nations."},
+  {s:"purpose",t:"I walk in the specific calling God has placed on my life - I will not drift from it.",r:"2 Timothy 1:9",v:"He has saved us and called us to a holy life - not because of anything we have done but because of his own purpose and grace."},
+  {s:"purpose",t:"God knew me before I was born, and my life is not accidental.",r:"Jeremiah 1:5",v:"Before I formed you in the womb I knew you, before you were born I set you apart."},
   {s:"purpose",t:"I am a good steward of the gifts, skills, and platform God has entrusted to me.",r:"Matthew 25:21",v:"His master replied, 'Well done, good and faithful servant! You have been faithful with a few things; I will put you in charge of many things. Come and share your master's happiness!'"},
   {s:"purpose",t:"I run with patience and endurance the race that God has set before me.",r:"Hebrews 12:1",v:"Therefore, since we are surrounded by such a great cloud of witnesses, let us throw off everything that hinders and the sin that so easily entangles. And let us run with perseverance the race marked out for us."},
   {s:"work",t:"I enter every workplace with humility, wisdom, and favour.",r:"Luke 2:52",v:"And Jesus grew in wisdom and stature, and in favour with God and man."},
@@ -921,87 +946,87 @@ const D = [
   {s:"work",t:"I meet my responsibilities faithfully and consistently.",r:"Luke 16:10",v:"Whoever can be trusted with very little can also be trusted with much, and whoever is dishonest with very little will also be dishonest with much."},
   {s:"work",t:"The Lord grants me productive relationships with my managers, leaders, and colleagues.",r:"Romans 12:18",v:"If it is possible, as far as it depends on you, live at peace with everyone."},
   {s:"work",t:"I am quick to listen, slow to speak, and slow to become angry.",r:"James 1:19",v:"My dear brothers and sisters, take note of this: everyone should be quick to listen, slow to speak and slow to become angry."},
-  {s:"work",t:"God gives me solutions where others see only problems.",r:"Isaiah 11:2",v:"The Spirit of the Lord will rest on him — the Spirit of wisdom and of understanding, the Spirit of counsel and of might, the Spirit of the knowledge and fear of the Lord."},
-  {s:"work",t:"I will not be overwhelmed by work because God's grace is sufficient for me.",r:"2 Corinthians 12:9",v:"But he said to me, 'My grace is sufficient for you, for my power is made perfect in weakness.' Therefore I will boast all the more gladly about my weaknesses, so that Christ's power may rest on me."},
-  {s:"work",t:"My efforts produce meaningful results and lasting impact.",r:"Psalm 90:17",v:"May the favour of the Lord our God rest on us; establish the work of our hands for us — yes, establish the work of our hands."},
+  {s:"work",t:"I ask God for wisdom, and He gives me understanding for the problems before me.",r:"James 1:5",v:"If any of you lacks wisdom, you should ask God, who gives generously to all without finding fault, and it will be given to you."},
+  {s:"work",t:"When work feels heavy, I come to Christ for rest and learn to carry my responsibilities with His gentleness.",r:"Matthew 11:28-30",v:"Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me."},
+  {s:"work",t:"My efforts produce meaningful results and lasting impact.",r:"Psalm 90:17",v:"May the favour of the Lord our God rest on us; establish the work of our hands for us - yes, establish the work of our hands."},
   {s:"work",t:"The Lord causes me to prosper in the work He has entrusted to me.",r:"Joshua 1:8",v:"Keep this Book of the Law always on your lips; meditate on it day and night, so that you may be careful to do everything written in it. Then you will be prosperous and successful."},
   {s:"work",t:"I have the courage to learn, ask questions, and improve every single day.",r:"Proverbs 1:5",v:"Let the wise listen and add to their learning, and let the discerning get guidance."},
   {s:"work",t:"I work as unto the Lord and not merely for people's approval.",r:"Colossians 3:23",v:"Whatever you do, work at it with all your heart, as working for the Lord, not for human masters."},
-  {s:"work",t:"I am a person of integrity — my yes means yes and my no means no.",r:"Matthew 5:37",v:"All you need to say is simply 'Yes' or 'No'; anything beyond this comes from the evil one."},
+  {s:"work",t:"I am a person of integrity - my yes means yes and my no means no.",r:"Matthew 5:37",v:"All you need to say is simply 'Yes' or 'No'; anything beyond this comes from the evil one."},
   {s:"work",t:"I bring creativity, diligence, and fresh thinking to every challenge I face.",r:"Exodus 31:3",v:"And I have filled him with the Spirit of God, with wisdom, with understanding, with knowledge and with all kinds of skills."},
   {s:"work",t:"God goes before me in every meeting, presentation, and evaluation.",r:"Deuteronomy 31:8",v:"The Lord himself goes before you and will be with you; he will never leave you nor forsake you. Do not be afraid; do not be discouraged."},
   {s:"wealth",t:"God teaches me to build wealth with wisdom and integrity.",r:"Deuteronomy 8:18",v:"But remember the Lord your God, for it is he who gives you the ability to produce wealth, and so confirms his covenant, which he swore to your ancestors, as it is today."},
   {s:"wealth",t:"I reject the love of money and pursue God's purpose first.",r:"Matthew 6:33",v:"But seek first his kingdom and his righteousness, and all these things will be given to you as well."},
-  {s:"wealth",t:"The Lord entrusts greater resources to me because I am faithful with small things.",r:"Luke 16:10",v:"Whoever can be trusted with very little can also be trusted with much, and whoever is dishonest with very little will also be dishonest with much."},
+  {s:"wealth",t:"I store and use resources wisely instead of consuming everything I receive.",r:"Proverbs 21:20",v:"The wise store up choice food and olive oil, but fools gulp theirs down."},
   {s:"wealth",t:"I am blessed to be a blessing to others.",r:"Genesis 12:2",v:"I will make you into a great nation, and I will bless you; I will make your name great, and you will be a blessing."},
-  {s:"wealth",t:"God opens doors of opportunity that align with His will for my life.",r:"Isaiah 22:22",v:"I will place on his shoulder the key to the house of David; what he opens no one can shut, and what he shuts no one can open."},
+  {s:"wealth",t:"God opens the right doors and closes the wrong ones according to His will.",r:"Revelation 3:8",v:"See, I have placed before you an open door that no one can shut."},
   {s:"wealth",t:"My financial decisions are guided by wisdom and not emotion.",r:"Proverbs 3:13",v:"Blessed are those who find wisdom, those who gain understanding."},
   {s:"wealth",t:"I leave a legacy of faithfulness for generations that come after me.",r:"Proverbs 13:22",v:"A good person leaves an inheritance for their children's children, but a sinner's wealth is stored up for the righteous."},
   {s:"wealth",t:"I honour the Lord with my finances and the first portion of all I earn.",r:"Proverbs 3:9",v:"Honour the Lord with your wealth, with the firstfruits of all your crops."},
-  {s:"wealth",t:"God makes me lend and not borrow — I am the head and not the tail.",r:"Deuteronomy 28:12–13",v:"The Lord will open the heavens, the storehouse of his bounty, to send rain on your land in season and to bless all the work of your hands. You will lend to many nations but will borrow from none. The Lord will make you the head, not the tail."},
-  {s:"wealth",t:"I am content in every season while still pressing toward greater fruitfulness.",r:"Philippians 4:11–12",v:"I have learned to be content whatever the circumstances. I know what it is to be in need, and I know what it is to have plenty. I have learned the secret of being content in any and every situation."},
+  {s:"wealth",t:"The Lord teaches me wise stewardship, contentment, and freedom from unnecessary debt.",r:"Proverbs 22:7",v:"The rich rule over the poor, and the borrower is slave to the lender."},
+  {s:"wealth",t:"I am content in every season while still pressing toward greater fruitfulness.",r:"Philippians 4:11-12",v:"I have learned to be content whatever the circumstances. I know what it is to be in need, and I know what it is to have plenty. I have learned the secret of being content in any and every situation."},
   {s:"wealth",t:"I give generously and cheerfully, knowing God loves a cheerful giver.",r:"2 Corinthians 9:7",v:"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."},
   {s:"wealth",t:"I plan, budget, and invest with a long-term, kingdom-minded perspective.",r:"Luke 14:28",v:"Suppose one of you wants to build a tower. Won't you first sit down and estimate the cost to see if you have enough money to complete it?"},
   {s:"relationships",t:"God strengthens the bonds between me and my family.",r:"Psalm 133:1",v:"How good and pleasant it is when God's people live together in unity!"},
   {s:"relationships",t:"I speak words that bring healing and not division.",r:"Proverbs 16:24",v:"Gracious words are a honeycomb, sweet to the soul and healing to the bones."},
   {s:"relationships",t:"The Lord teaches me how to love, forgive, and reconcile.",r:"Colossians 3:13",v:"Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you."},
   {s:"relationships",t:"I choose forgiveness even when it is difficult.",r:"Ephesians 4:32",v:"Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you."},
-  {s:"relationships",t:"God restores what has been damaged in my relationships according to His will.",r:"Joel 2:25",v:"I will repay you for the years the locusts have eaten — the great locust and the young locust, the other locusts and the locust swarm — my great army that I sent among you."},
+  {s:"relationships",t:"God restores what has been damaged in my relationships according to His will.",r:"Joel 2:25",v:"I will repay you for the years the locusts have eaten - the great locust and the young locust, the other locusts and the locust swarm - my great army that I sent among you."},
   {s:"relationships",t:"I honour the people in my life with patience, kindness, and respect.",r:"Romans 12:10",v:"Be devoted to one another in love. Honour one another above yourselves."},
   {s:"relationships",t:"The peace of Christ rules in my heart and governs all my relationships.",r:"Colossians 3:15",v:"Let the peace of Christ rule in your hearts, since as members of one body you were called to peace. And be thankful."},
-  {s:"relationships",t:"I attract wise, faith-filled, and purpose-driven people into my life.",r:"Proverbs 13:20",v:"Walk with the wise and become wise, for a companion of fools suffers harm."},
+  {s:"relationships",t:"I choose to walk with wise, faith-filled, and purpose-driven people.",r:"Proverbs 13:20",v:"Walk with the wise and become wise, for a companion of fools suffers harm."},
   {s:"relationships",t:"I have the courage to set healthy boundaries where they are needed.",r:"Proverbs 4:23",v:"Above all else, guard your heart, for everything you do flows from it."},
-  {s:"relationships",t:"I am a true friend — loyal, honest, and present.",r:"Proverbs 17:17",v:"A friend loves at all times, and a brother is born for a time of adversity."},
+  {s:"relationships",t:"I am a true friend - loyal, honest, and present.",r:"Proverbs 17:17",v:"A friend loves at all times, and a brother is born for a time of adversity."},
   {s:"relationships",t:"I release bitterness and walk in freedom and wholeness.",r:"Hebrews 12:15",v:"See to it that no one falls short of the grace of God and that no bitter root grows up to cause trouble and defile many."},
-  {s:"relationships",t:"God gives me wisdom to know who to invest in and who to trust.",r:"Proverbs 4:7",v:"The beginning of wisdom is this: Get wisdom. Though it cost all you have, get understanding."},
+  {s:"relationships",t:"God gives me wisdom to know who to invest in and who to trust.",r:"Proverbs 2:6",v:"For the Lord gives wisdom; from his mouth come knowledge and understanding."},
   {s:"marriage",t:"God is preparing me to be a faithful husband before He gives me a wife.",r:"Ephesians 5:25",v:"Husbands, love your wives, just as Christ loved the church and gave himself up for her."},
   {s:"marriage",t:"I seek covenant and not temporary companionship.",r:"Genesis 2:24",v:"That is why a man leaves his father and mother and is united to his wife, and they become one flesh."},
-  {s:"marriage",t:"The Lord guards my heart and my desires in this season.",r:"Proverbs 4:23",v:"Above all else, guard your heart, for everything you do flows from it."},
+  {s:"marriage",t:"I guard my desires and do not awaken love before its time.",r:"Song of Songs 8:4",v:"Do not arouse or awaken love until it so desires."},
   {s:"marriage",t:"I will not settle for relationships that pull me away from God's purpose.",r:"2 Corinthians 6:14",v:"Do not be yoked together with unbelievers. For what do righteousness and wickedness have in common? Or what fellowship can light have with darkness?"},
   {s:"marriage",t:"God leads me in His timing and not in my impatience.",r:"Ecclesiastes 3:11",v:"He has made everything beautiful in its time. He has also set eternity in the human heart; yet no one can fathom what God has done from beginning to end."},
-  {s:"marriage",t:"I trust the Lord completely with my future marriage.",r:"Psalm 37:4–5",v:"Take delight in the Lord, and he will give you the desires of your heart. Commit your way to the Lord; trust in him and he will do this."},
+  {s:"marriage",t:"I trust the Lord completely with my future marriage.",r:"Psalm 37:4-5",v:"Take delight in the Lord, and he will give you the desires of your heart. Commit your way to the Lord; trust in him and he will do this."},
   {s:"marriage",t:"I am becoming the man I am praying my future wife will find.",r:"1 Timothy 4:12",v:"Don't let anyone look down on you because you are young, but set an example for the believers in speech, in conduct, in love, in faith and in purity."},
   {s:"marriage",t:"My future wife and I will build a home that glorifies God.",r:"Joshua 24:15",v:"But as for me and my household, we will serve the Lord."},
-  {s:"marriage",t:"I do not rush what God is carefully constructing.",r:"Isaiah 28:16",v:"See, I lay a stone in Zion, a tested stone, a precious cornerstone for a sure foundation; the one who relies on it will never be stricken with panic."},
-  {s:"marriage",t:"I am whole and complete in Christ — I am not waiting to be completed by another person.",r:"Colossians 2:10",v:"And in Christ you have been brought to fullness. He is the head over every power and authority."},
+  {s:"marriage",t:"I do not rush what God must build; unless the Lord builds the house, the builders labour in vain.",r:"Psalm 127:1",v:"Unless the Lord builds the house, the builders labour in vain."},
+  {s:"marriage",t:"I am whole and complete in Christ - I am not waiting to be completed by another person.",r:"Colossians 2:10",v:"And in Christ you have been brought to fullness. He is the head over every power and authority."},
   {s:"health",t:"I have the discipline to train my body and my mind consistently.",r:"1 Timothy 4:8",v:"For physical training is of some value, but godliness has value for all things, holding promise for both the present life and the life to come."},
   {s:"health",t:"God gives me strength to exercise and care for my health.",r:"Isaiah 40:29",v:"He gives strength to the weary and increases the power of the weak."},
   {s:"health",t:"I choose food that nourishes and strengthens me.",r:"1 Corinthians 10:31",v:"So whether you eat or drink or whatever you do, do it all for the glory of God."},
-  {s:"health",t:"My body serves God's purpose and I honour it accordingly.",r:"Romans 12:1",v:"Therefore, I urge you, brothers and sisters, in view of God's mercy, to offer your bodies as a living sacrifice, holy and pleasing to God — this is your true and proper worship."},
-  {s:"health",t:"I grow stronger physically, mentally, and spiritually each day.",r:"Luke 2:52",v:"And Jesus grew in wisdom and stature, and in favour with God and man."},
-  {s:"health",t:"The Lord grants me restful sleep and renewed energy for each new day.",r:"Psalm 127:2",v:"In vain you rise early and stay up late, toiling for food to eat — for he grants sleep to those he loves."},
-  {s:"health",t:"I wake up refreshed and ready for the day God has given me.",r:"Lamentations 3:22–23",v:"Because of the Lord's great love we are not consumed, for his compassions never fail. They are new every morning; great is your faithfulness."},
+  {s:"health",t:"My body serves God's purpose and I honour it accordingly.",r:"Romans 12:1",v:"Therefore, I urge you, brothers and sisters, in view of God's mercy, to offer your bodies as a living sacrifice, holy and pleasing to God - this is your true and proper worship."},
+  {s:"health",t:"I steward my body with gratitude because I am fearfully and wonderfully made.",r:"Psalm 139:14",v:"I praise you because I am fearfully and wonderfully made; your works are wonderful, I know that full well."},
+  {s:"health",t:"The Lord grants me restful sleep and renewed energy for each new day.",r:"Psalm 127:2",v:"In vain you rise early and stay up late, toiling for food to eat - for he grants sleep to those he loves."},
+  {s:"health",t:"Each morning, I receive God's mercy and begin again with gratitude.",r:"Lamentations 3:22-23",v:"Because of the Lord's great love we are not consumed, for his compassions never fail. They are new every morning; great is your faithfulness."},
   {s:"health",t:"I make intentional time for learning, reading, and personal growth.",r:"Proverbs 18:15",v:"The heart of the discerning acquires knowledge, for the ears of the wise seek it out."},
   {s:"health",t:"Good habits are taking root in my life through God's grace.",r:"Galatians 6:9",v:"Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up."},
   {s:"health",t:"I honour God with my sleep, my rest, and my rhythm.",r:"Psalm 4:8",v:"In peace I will lie down and sleep, for you alone, Lord, make me dwell in safety."},
-  {s:"health",t:"I am disciplined with my time — I do not waste what God has given me.",r:"Ephesians 5:16",v:"Making the most of every opportunity, because the days are evil."},
+  {s:"health",t:"I am disciplined with my time - I do not waste what God has given me.",r:"Ephesians 5:16",v:"Making the most of every opportunity, because the days are evil."},
   {s:"health",t:"My body is a temple of the Holy Spirit and I treat it with reverence.",r:"1 Corinthians 6:19",v:"Do you not know that your bodies are temples of the Holy Spirit, who is in you, whom you have received from God? You are not your own."},
   {s:"character",t:"I walk in integrity even when no one is watching.",r:"Proverbs 11:3",v:"The integrity of the upright guides them, but the unfaithful are destroyed by their duplicity."},
-  {s:"character",t:"I am a man of my word — reliable, consistent, and trustworthy.",r:"Psalm 15:4",v:"Who keeps an oath even when it hurts, and does not change their mind."},
+  {s:"character",t:"I am a man of my word - reliable, consistent, and trustworthy.",r:"Psalm 15:4",v:"Who keeps an oath even when it hurts, and does not change their mind."},
   {s:"character",t:"I choose humility over pride in every situation.",r:"Proverbs 22:4",v:"Humility is the fear of the Lord; its wages are riches and honour and life."},
   {s:"character",t:"I take responsibility for my choices and do not shift blame to others.",r:"Galatians 6:5",v:"For each one should carry their own load."},
-  {s:"character",t:"God is refining my character through every trial and test.",r:"James 1:3–4",v:"Because you know that the testing of your faith produces perseverance. Let perseverance finish its work so that you may be mature and complete, not lacking anything."},
+  {s:"character",t:"God is refining my character through every trial and test.",r:"James 1:3-4",v:"Because you know that the testing of your faith produces perseverance. Let perseverance finish its work so that you may be mature and complete, not lacking anything."},
   {s:"character",t:"I am slow to anger and quick to extend grace to others.",r:"Proverbs 16:32",v:"Better a patient person than a warrior, one with self-control than one who takes a city."},
   {s:"character",t:"I speak truthfully, kindly, and with purpose.",r:"Ephesians 4:15",v:"Instead, speaking the truth in love, we will grow to become in every respect the mature body of him who is the head, that is, Christ."},
   {s:"character",t:"I serve others without seeking recognition or applause.",r:"Mark 10:45",v:"For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many."},
   {s:"character",t:"My reputation is built on faithfulness, not performance.",r:"Proverbs 20:6",v:"Many claim to have unfailing love, but a faithful person who can find?"},
   {s:"mind",t:"I take every thought captive and bring it into obedience to Christ.",r:"2 Corinthians 10:5",v:"We demolish arguments and every pretension that sets itself up against the knowledge of God, and we take captive every thought to make it obedient to Christ."},
-  {s:"mind",t:"My mind is sharp, focused, and full of clarity.",r:"2 Timothy 1:7",v:"For the Spirit God gave us does not make us timid, but gives us power, love and self-discipline."},
-  {s:"mind",t:"I renew my mind daily through the Word of God.",r:"Romans 12:2",v:"Do not conform to the pattern of this world, but be transformed by the renewing of your mind. Then you will be able to test and approve what God's will is — his good, pleasing and perfect will."},
-  {s:"mind",t:"I do not entertain fear, anxiety, or self-doubt — I have the mind of Christ.",r:"1 Corinthians 2:16",v:"For who has known the mind of the Lord so as to instruct him? But we have the mind of Christ."},
-  {s:"mind",t:"I think on things that are true, noble, right, pure, and praiseworthy.",r:"Philippians 4:8",v:"Finally, brothers and sisters, whatever is true, whatever is noble, whatever is right, whatever is pure, whatever is lovely, whatever is admirable — if anything is excellent or praiseworthy — think about such things."},
-  {s:"mind",t:"God has given me a spirit of power, love, and self-discipline.",r:"2 Timothy 1:7",v:"For the Spirit God gave us does not make us timid, but gives us power, love and self-discipline."},
-  {s:"mind",t:"I am not conformed to the patterns of this world — I think differently.",r:"Romans 12:2",v:"Do not conform to the pattern of this world, but be transformed by the renewing of your mind."},
+  {s:"mind",t:"God has given me a sound, disciplined, and focused mind.",r:"2 Timothy 1:7",v:"For the Spirit God gave us does not make us timid, but gives us power, love and self-discipline."},
+  {s:"mind",t:"I renew my mind daily through the Word of God.",r:"Romans 12:2",v:"Do not conform to the pattern of this world, but be transformed by the renewing of your mind. Then you will be able to test and approve what God's will is - his good, pleasing and perfect will."},
+  {s:"mind",t:"When fear, anxiety, or self-doubt arise, I bring them under the truth of Christ.",r:"1 Corinthians 2:16",v:"For who has known the mind of the Lord so as to instruct him? But we have the mind of Christ."},
+  {s:"mind",t:"I think on things that are true, noble, right, pure, and praiseworthy.",r:"Philippians 4:8",v:"Finally, brothers and sisters, whatever is true, whatever is noble, whatever is right, whatever is pure, whatever is lovely, whatever is admirable - if anything is excellent or praiseworthy - think about such things."},
+  {s:"mind",t:"God strengthens me with courage, love, and self-discipline.",r:"Joshua 1:9",v:"Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go."},
+  {s:"mind",t:"I set my mind on things above and refuse to be ruled by the patterns of this world.",r:"Colossians 3:2",v:"Set your minds on things above, not on earthly things."},
   {s:"mind",t:"I cast my anxieties on God because He genuinely cares for me.",r:"1 Peter 5:7",v:"Cast all your anxiety on him because he cares for you."},
-  {s:"faith",t:"I trust God with all my heart and I do not lean on my own understanding.",r:"Proverbs 3:5–6",v:"Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight."},
-  {s:"faith",t:"God's plans for me are good — to give me a future and a hope.",r:"Jeremiah 29:11",v:"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future."},
+  {s:"faith",t:"I trust God with all my heart and I do not lean on my own understanding.",r:"Proverbs 3:5-6",v:"Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight."},
+  {s:"faith",t:"God is faithful in the long story of my life, and my hope is secure in Him.",r:"Jeremiah 29:11",v:"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future."},
   {s:"faith",t:"I walk by faith and not by what I can see with my natural eyes.",r:"2 Corinthians 5:7",v:"For we live by faith, not by sight."},
-  {s:"faith",t:"I bring my requests to God with thanksgiving and my heart is at peace.",r:"Philippians 4:6–7",v:"Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus."},
+  {s:"faith",t:"I bring my requests to God with thanksgiving and my heart is at peace.",r:"Philippians 4:6-7",v:"Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus."},
   {s:"faith",t:"Nothing is impossible for the God who called me.",r:"Luke 1:37",v:"For no word from God will ever fail."},
   {s:"faith",t:"I am more than a conqueror through Christ who loves me.",r:"Romans 8:37",v:"No, in all these things we are more than conquerors through him who loved us."},
-  {s:"faith",t:"God's strength is made perfect in my weakness — I rely on Him.",r:"2 Corinthians 12:9",v:"But he said to me, 'My grace is sufficient for you, for my power is made perfect in weakness.' Therefore I will boast all the more gladly about my weaknesses, so that Christ's power may rest on me."},
+  {s:"faith",t:"God's strength is made perfect in my weakness - I rely on Him.",r:"2 Corinthians 12:9",v:"But he said to me, 'My grace is sufficient for you, for my power is made perfect in weakness.' Therefore I will boast all the more gladly about my weaknesses, so that Christ's power may rest on me."},
   {s:"faith",t:"I will declare the works of the Lord all the days of my life.",r:"Psalm 118:17",v:"I will not die but live, and will proclaim what the Lord has done."},
-  {s:"faith",t:"This is the day the Lord has made — I will rejoice and be glad in it.",r:"Psalm 118:24",v:"The Lord has done it this very day; let us rejoice today and be glad."}
+  {s:"faith",t:"This is the day the Lord has made - I will rejoice and be glad in it.",r:"Psalm 118:24",v:"The Lord has done it this very day; let us rejoice today and be glad."}
 ];
 
 let done = new Set(JSON.parse(localStorage.getItem('coz_done') || '[]'));
@@ -1011,6 +1036,23 @@ let activeSection = 'all';
 let activeFilter = 'all';
 let searchTerm = '';
 let openIndex = null;
+let themeMode = localStorage.getItem('coz_theme') || 'light';
+
+function applyTheme() {
+  document.documentElement.dataset.theme = themeMode;
+  const btn = document.getElementById('themeToggle');
+  if (btn) btn.textContent = themeMode === 'dark' ? 'Day' : 'Night';
+  const themeColor = themeMode === 'dark' ? '#06120e' : '#047857';
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', themeColor);
+}
+
+function toggleTheme() {
+  themeMode = themeMode === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('coz_theme', themeMode);
+  applyTheme();
+}
+
+applyTheme();
 
 // Swipe support
 let touchStartX = 0;
