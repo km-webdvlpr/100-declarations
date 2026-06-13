@@ -12,10 +12,11 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   color-scheme: light dark;
+  --font-tech: 'IBM Plex Mono', 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   --bg: #f4fbf7;
   --surface: #ffffff;
   --card: #ffffff;
@@ -66,7 +67,7 @@ html, body { scroll-padding-bottom: calc(var(--bottom-bar-height) + var(--safe-b
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-tech);
   font-size: 16px;
   min-height: 100vh;
   overflow-x: hidden;
@@ -127,7 +128,7 @@ header {
 }
 
 .header-eyebrow {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 9.5px;
   letter-spacing: 0.28em;
   color: var(--gold);
@@ -137,7 +138,7 @@ header {
 }
 
 h1 {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-tech);
   font-size: clamp(18px, 5vw, 26px);
   font-weight: 700;
   color: var(--text);
@@ -155,7 +156,7 @@ h1 em {
 .anchor-verse {
   margin: 10px auto 0;
   max-width: 400px;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-tech);
   font-style: italic;
   font-size: 13px;
   color: var(--text-dim);
@@ -180,7 +181,7 @@ h1 em {
   transition: width 0.6s cubic-bezier(0.34,1.56,0.64,1);
 }
 .progress-label {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 10px;
   color: var(--text-dim);
   display: flex;
@@ -207,7 +208,7 @@ h1 em {
 }
 .tracker-stat strong {
   display: block;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 16px;
   line-height: 1.1;
   color: var(--gold-light);
@@ -215,7 +216,7 @@ h1 em {
 .tracker-stat span {
   display: block;
   margin-top: 4px;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 8.5px;
   line-height: 1.35;
   color: var(--text-dim);
@@ -235,7 +236,7 @@ h1 em {
   border: 1px solid var(--border);
   border-radius: 8px;
   color: var(--text);
-  font: 600 13px/1.2 'Nunito', sans-serif;
+  font: 600 13px/1.2 var(--font-tech);
   padding: 11px 12px;
   outline: none;
 }
@@ -255,7 +256,7 @@ h1 em {
   color: var(--text-dim);
   border-radius: 6px;
   padding: 8px 9px;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 9px;
   cursor: pointer;
   transition: all 0.18s;
@@ -279,7 +280,7 @@ h1 em {
   cursor: pointer;
 }
 .focus-kicker {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 8.5px;
   color: var(--gold);
   letter-spacing: 0.12em;
@@ -296,7 +297,7 @@ h1 em {
 }
 .focus-arrow {
   color: var(--gold-light);
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 14px;
 }
 
@@ -315,7 +316,7 @@ h1 em {
   gap: 12px;
 }
 .morning-kicker {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 8.5px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -323,7 +324,7 @@ h1 em {
   margin-bottom: 3px;
 }
 .morning-title {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-tech);
   font-size: 15px;
   line-height: 1.25;
   color: var(--text);
@@ -334,7 +335,7 @@ h1 em {
 }
 .morning-score strong {
   display: block;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 16px;
   line-height: 1.1;
   color: var(--gold-light);
@@ -342,7 +343,7 @@ h1 em {
 .morning-score span {
   display: block;
   margin-top: 4px;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 8px;
   line-height: 1.25;
   color: var(--text-dim);
@@ -378,7 +379,7 @@ h1 em {
 }
 .morning-field span,
 .morning-note-label {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 8.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -396,7 +397,7 @@ h1 em {
   border: 1px solid var(--border);
   border-radius: 8px;
   color: var(--text);
-  font: 700 13px/1.2 'Nunito', sans-serif;
+  font: 700 13px/1.2 var(--font-tech);
   padding: 10px 10px;
   outline: none;
 }
@@ -411,7 +412,7 @@ h1 em {
   border: 1px solid var(--border-bright);
   border-radius: 8px;
   color: var(--text-mid);
-  font: 800 11px/1 'Nunito', sans-serif;
+  font: 800 11px/1 var(--font-tech);
   padding: 10px 9px;
   cursor: pointer;
 }
@@ -465,7 +466,7 @@ h1 em {
 }
 .morning-step-meta {
   color: var(--text-dim);
-  font: 500 11px/1.3 'DM Mono', monospace;
+  font: 500 11px/1.3 var(--font-tech);
   white-space: nowrap;
 }
 .morning-departure {
@@ -480,14 +481,14 @@ h1 em {
   border-radius: 10px;
   background: linear-gradient(135deg, var(--gold), var(--gold-light));
   color: #0a0c10;
-  font: 800 13px/1 'Nunito', sans-serif;
+  font: 800 13px/1 var(--font-tech);
   padding: 12px 10px;
   cursor: pointer;
 }
 .departure-status {
   min-width: 0;
   color: var(--text-dim);
-  font: 700 11px/1.35 'DM Mono', monospace;
+  font: 700 11px/1.35 var(--font-tech);
   text-align: right;
 }
 .departure-status.on-time { color: var(--green); }
@@ -505,7 +506,7 @@ h1 em {
   border: 1px solid var(--border);
   border-radius: 9px;
   color: var(--text);
-  font: 600 13px/1.45 'Nunito', sans-serif;
+  font: 600 13px/1.45 var(--font-tech);
   padding: 10px 11px;
   outline: none;
 }
@@ -521,7 +522,7 @@ h1 em {
   border: 1px solid var(--border-bright);
   border-radius: 9px;
   color: var(--text-mid);
-  font: 700 12px/1 'Nunito', sans-serif;
+  font: 700 12px/1 var(--font-tech);
   cursor: pointer;
 }
 .empty-state {
@@ -555,7 +556,7 @@ h1 em {
   border-radius: 8px;
   padding: 5px 11px;
   font-size: 10.5px;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   color: var(--text-dim);
   cursor: pointer;
   transition: all 0.18s;
@@ -579,7 +580,7 @@ h1 em {
   border: 1px solid var(--green-border);
   border-radius: 12px;
   margin: 10px 0 4px;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-tech);
   font-style: italic;
   font-size: 16px;
   color: var(--green);
@@ -594,7 +595,7 @@ h1 em {
   gap: 10px;
 }
 .section-heading h2 {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-tech);
   font-size: 13px;
   font-weight: 600;
   color: var(--gold);
@@ -606,7 +607,7 @@ h1 em {
   text-transform: uppercase;
 }
 .count-badge {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 9.5px;
   background: var(--gold-dim);
   color: var(--gold);
@@ -657,7 +658,7 @@ h1 em {
 .decl-card.done:hover { opacity: 0.8; }
 
 .decl-num {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 9.5px;
   color: var(--gold);
   min-width: 20px;
@@ -680,7 +681,7 @@ h1 em {
   font-weight: 600;
 }
 .decl-ref {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 9px;
   color: var(--gold);
   opacity: 0.55;
@@ -760,13 +761,13 @@ h1 em {
   min-width: 0;
 }
 .modal-num {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 9.5px;
   color: var(--text-dim);
   letter-spacing: 0.08em;
 }
 .modal-section-tag {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 8.5px;
   color: var(--gold);
   background: var(--gold-dim);
@@ -800,7 +801,7 @@ h1 em {
 .arrow-btn:disabled { opacity: 0.25; cursor: default; }
 
 .modal-text {
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-tech);
   font-size: clamp(23px, 5vw, 30px);
   font-weight: 800;
   line-height: 1.42;
@@ -812,7 +813,7 @@ h1 em {
 
 .modal-ref-badge {
   display: inline-block;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 10.5px;
   color: var(--gold);
   background: var(--gold-dim);
@@ -836,14 +837,14 @@ h1 em {
   content: '\201C';
   position: absolute;
   top: -8px; left: 10px;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-tech);
   font-size: 80px;
   color: rgba(201,168,76,0.1);
   line-height: 1;
   pointer-events: none;
 }
 .scripture-label {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 8.5px;
   color: var(--gold);
   letter-spacing: 0.18em;
@@ -852,7 +853,7 @@ h1 em {
   opacity: 0.65;
 }
 .scripture-text {
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-tech);
   font-style: italic;
   font-size: 16px;
   line-height: 1.75;
@@ -870,7 +871,7 @@ h1 em {
   padding: 13px 10px;
   border-radius: 11px;
   border: none;
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-tech);
   font-size: 14px;
   font-weight: 800;
   cursor: pointer;
@@ -920,7 +921,7 @@ h1 em {
   border: none;
   border-radius: 11px;
   padding: 13px;
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-tech);
   font-size: 14px;
   font-weight: 800;
   cursor: pointer;
@@ -936,7 +937,7 @@ h1 em {
   border: 1px solid var(--border-bright);
   border-radius: 11px;
   color: var(--text-dim);
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-tech);
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
@@ -978,7 +979,7 @@ h1 em {
   filter: drop-shadow(0 0 6px rgba(201,168,76,0.3));
 }
 .prayer-card h3 {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-tech);
   font-size: 14px;
   font-weight: 600;
   color: var(--gold-light);
@@ -987,7 +988,7 @@ h1 em {
   text-transform: uppercase;
 }
 .prayer-card p {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-tech);
   font-style: italic;
   font-size: 15px;
   line-height: 1.88;
@@ -995,7 +996,7 @@ h1 em {
 }
 .prayer-amen {
   margin-top: 16px;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-tech);
   font-size: 11px;
   color: var(--gold);
   letter-spacing: 0.2em;
