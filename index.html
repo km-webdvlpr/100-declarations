@@ -299,6 +299,231 @@ h1 em {
   font-family: 'DM Mono', monospace;
   font-size: 14px;
 }
+
+/* -- MORNING EXECUTION -- */
+.morning-panel {
+  margin: 12px 0 6px;
+  padding: 14px;
+  background: linear-gradient(160deg, rgba(4,120,87,0.08), rgba(201,168,76,0.08));
+  border: 1px solid rgba(4,120,87,0.22);
+  border-radius: 14px;
+}
+.morning-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.morning-kicker {
+  font-family: 'DM Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+.morning-title {
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+  line-height: 1.25;
+  color: var(--text);
+}
+.morning-score {
+  text-align: right;
+  min-width: 76px;
+}
+.morning-score strong {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 16px;
+  line-height: 1.1;
+  color: var(--gold-light);
+}
+.morning-score span {
+  display: block;
+  margin-top: 4px;
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  line-height: 1.25;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.morning-bar {
+  height: 7px;
+  margin: 12px 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.morning-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 99px;
+  transition: width 0.28s ease;
+}
+.morning-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.morning-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+.morning-field span,
+.morning-note-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.morning-input-wrap {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.morning-input {
+  width: 100%;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font: 700 13px/1.2 'Nunito', sans-serif;
+  padding: 10px 10px;
+  outline: none;
+}
+.morning-input:focus,
+.morning-note:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px var(--gold-dim);
+}
+.morning-chip {
+  flex: 0 0 auto;
+  background: var(--card);
+  border: 1px solid var(--border-bright);
+  border-radius: 8px;
+  color: var(--text-mid);
+  font: 800 11px/1 'Nunito', sans-serif;
+  padding: 10px 9px;
+  cursor: pointer;
+}
+.morning-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.morning-step {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 10px;
+  background: color-mix(in srgb, var(--card) 82%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+.morning-step.done {
+  background: var(--green-dim);
+  border-color: var(--green-border);
+}
+.morning-step.late {
+  border-color: rgba(180,83,9,0.35);
+}
+.morning-check {
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
+  border-radius: 50%;
+  border: 1px solid var(--border-bright);
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  color: var(--gold-light);
+}
+.morning-step.done .morning-check {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #fff;
+}
+.morning-step-text {
+  flex: 1;
+  min-width: 0;
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 1.25;
+}
+.morning-step-meta {
+  color: var(--text-dim);
+  font: 500 11px/1.3 'DM Mono', monospace;
+  white-space: nowrap;
+}
+.morning-departure {
+  display: grid;
+  grid-template-columns: 0.9fr 0.8fr 1fr;
+  gap: 7px;
+  align-items: center;
+  margin-top: 9px;
+}
+.morning-primary {
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #0a0c10;
+  font: 800 13px/1 'Nunito', sans-serif;
+  padding: 12px 10px;
+  cursor: pointer;
+}
+.departure-status {
+  min-width: 0;
+  color: var(--text-dim);
+  font: 700 11px/1.35 'DM Mono', monospace;
+  text-align: right;
+}
+.departure-status.on-time { color: var(--green); }
+.departure-status.late { color: #b45309; }
+.morning-note-wrap {
+  margin-top: 10px;
+}
+.morning-note {
+  display: block;
+  width: 100%;
+  min-height: 58px;
+  resize: vertical;
+  margin-top: 5px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  color: var(--text);
+  font: 600 13px/1.45 'Nunito', sans-serif;
+  padding: 10px 11px;
+  outline: none;
+}
+.morning-actions {
+  display: flex;
+  gap: 7px;
+  margin-top: 10px;
+}
+.morning-actions button {
+  flex: 1;
+  padding: 10px;
+  background: var(--card);
+  border: 1px solid var(--border-bright);
+  border-radius: 9px;
+  color: var(--text-mid);
+  font: 700 12px/1 'Nunito', sans-serif;
+  cursor: pointer;
+}
 .empty-state {
   padding: 26px 16px;
   text-align: center;
@@ -799,6 +1024,26 @@ h1 em {
   .tabs-wrap { margin-left: -12px; margin-right: -12px; padding-left: 12px; padding-right: 12px; }
   .focus-card { align-items: flex-start; }
   .focus-kicker { padding-top: 2px; }
+  .morning-panel { padding: 12px; }
+  .morning-grid,
+  .morning-departure {
+    grid-template-columns: 1fr;
+  }
+  .departure-status {
+    text-align: left;
+  }
+  .morning-input-wrap {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+  }
+  .morning-step {
+    padding: 9px;
+  }
+  .morning-step-meta {
+    white-space: normal;
+    text-align: right;
+    max-width: 86px;
+  }
   .section-heading {
     align-items: flex-start;
     gap: 7px;
@@ -891,6 +1136,50 @@ h1 em {
       <span class="focus-text" id="focusText">Start with Declaration 01</span>
       <span class="focus-arrow">&#8594;</span>
     </button>
+
+    <section class="morning-panel" aria-label="Morning execution tracker">
+      <div class="morning-top">
+        <div>
+          <div class="morning-kicker">Morning execution</div>
+          <h2 class="morning-title">First Duty Of The Day</h2>
+        </div>
+        <div class="morning-score">
+          <strong id="morningScore">0 / 7</strong>
+          <span id="morningStatus">Not started</span>
+        </div>
+      </div>
+      <div class="morning-bar">
+        <div class="morning-fill" id="morningFill"></div>
+      </div>
+      <div class="morning-grid">
+        <label class="morning-field">
+          <span>Pushups</span>
+          <div class="morning-input-wrap">
+            <input class="morning-input" id="pushupCount" type="number" min="0" max="500" step="1" inputmode="numeric" value="0" oninput="setPushups(this.value)">
+            <button class="morning-chip" type="button" onclick="adjustPushups(10)">+10</button>
+            <button class="morning-chip" type="button" onclick="adjustPushups(25)">+25</button>
+          </div>
+        </label>
+        <label class="morning-field">
+          <span>Leave by</span>
+          <input class="morning-input" id="leaveTarget" type="time" value="07:30" onchange="setLeaveTarget(this.value)">
+        </label>
+      </div>
+      <div class="morning-steps" id="morningSteps"></div>
+      <div class="morning-departure">
+        <button class="morning-primary" type="button" onclick="markDepartedNow()">Left now</button>
+        <input class="morning-input" id="departureTime" type="time" onchange="setDepartureTime(this.value)">
+        <div class="departure-status" id="departureStatus">Not logged</div>
+      </div>
+      <label class="morning-note-wrap">
+        <span class="morning-note-label">Honest note</span>
+        <textarea class="morning-note" id="morningNote" maxlength="220" placeholder="What helped or delayed you today?" oninput="setMorningNote(this.value)"></textarea>
+      </label>
+      <div class="morning-actions">
+        <button type="button" onclick="resetMorningToday()">Reset morning</button>
+        <button type="button" onclick="exportMorningCsv()">Morning CSV</button>
+      </div>
+    </section>
 
     <div class="tabs-wrap">
       <div class="tabs" id="tabs">
@@ -1064,14 +1353,114 @@ const D = [
   {s:"faith",t:"This is the day the Lord has made - I will rejoice and be glad in it.",r:"Psalm 118:24",v:"The Lord has done it this very day; let us rejoice today and be glad."}
 ];
 
-let done = new Set(JSON.parse(localStorage.getItem('coz_done') || '[]'));
-let history = JSON.parse(localStorage.getItem('coz_history') || '{}');
-let declarationLog = JSON.parse(localStorage.getItem('coz_log') || '[]');
+const STORAGE_KEYS = {
+  done: 'coz_done',
+  history: 'coz_history',
+  log: 'coz_log',
+  theme: 'coz_theme',
+  morning: 'coz_morning_history',
+  morningSettings: 'coz_morning_settings'
+};
+
+function readText(key, fallback = '') {
+  try {
+    const value = localStorage.getItem(key);
+    return value === null ? fallback : value;
+  } catch {
+    return fallback;
+  }
+}
+
+function writeText(key, value) {
+  try {
+    localStorage.setItem(key, value);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function readJson(key, fallback) {
+  try {
+    const raw = readText(key, '');
+    return raw ? JSON.parse(raw) : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function isDeclarationIndex(value) {
+  return Number.isInteger(value) && value >= 0 && value < D.length;
+}
+
+function normalizeIndexArray(value) {
+  return Array.isArray(value)
+    ? [...new Set(value.filter(isDeclarationIndex))].sort((a,b) => a - b)
+    : [];
+}
+
+function normalizeHistory(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
+  return Object.fromEntries(
+    Object.entries(value)
+      .map(([key, list]) => [key, normalizeIndexArray(list)])
+      .filter(([, list]) => list.length)
+  );
+}
+
+const savedLog = readJson(STORAGE_KEYS.log, []);
+let done = new Set(normalizeIndexArray(readJson(STORAGE_KEYS.done, [])));
+let history = normalizeHistory(readJson(STORAGE_KEYS.history, {}));
+let declarationLog = Array.isArray(savedLog) ? savedLog : [];
 let activeSection = 'all';
 let activeFilter = 'all';
 let searchTerm = '';
 let openIndex = null;
-let themeMode = localStorage.getItem('coz_theme') || 'light';
+let themeMode = readText(STORAGE_KEYS.theme, 'light');
+
+const MORNING_TASKS = [
+  {id:'declaration', label:'First declaration', meta:'Declaration 01'},
+  {id:'pushups', label:'Pushups', meta:'Count logged'},
+  {id:'weights', label:'Weights wake-up', meta:'Body awake'},
+  {id:'shower', label:'Shower', meta:'Reset'},
+  {id:'care', label:'Medication and lotion', meta:'Care done'},
+  {id:'dressed', label:'Dressed for work', meta:'Ready'},
+  {id:'departed', label:'Leave for work', meta:'On time'}
+];
+
+function normalizeMorningSettings(value) {
+  const settings = value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+  return {
+    targetLeave: /^\d{2}:\d{2}$/.test(settings.targetLeave || '') ? settings.targetLeave : '07:30',
+    pushupTarget: Number.isInteger(settings.pushupTarget) && settings.pushupTarget > 0 ? settings.pushupTarget : 100
+  };
+}
+
+function normalizeMorningEntry(key, value, settings) {
+  const source = value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+  const tasks = source.tasks && typeof source.tasks === 'object' && !Array.isArray(source.tasks) ? source.tasks : {};
+  return {
+    date: key,
+    tasks: Object.fromEntries(MORNING_TASKS.map(task => [task.id, Boolean(tasks[task.id])])),
+    pushups: Math.max(0, Math.min(500, Number.parseInt(source.pushups, 10) || 0)),
+    targetLeave: /^\d{2}:\d{2}$/.test(source.targetLeave || '') ? source.targetLeave : settings.targetLeave,
+    departureTime: /^\d{2}:\d{2}$/.test(source.departureTime || '') ? source.departureTime : '',
+    note: typeof source.note === 'string' ? source.note.slice(0, 220) : '',
+    updatedAt: typeof source.updatedAt === 'string' ? source.updatedAt : ''
+  };
+}
+
+function normalizeMorningHistory(value, settings) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
+  return Object.fromEntries(
+    Object.entries(value)
+      .filter(([key]) => /^\d{4}-\d{2}-\d{2}$/.test(key))
+      .map(([key, entry]) => [key, normalizeMorningEntry(key, entry, settings)])
+  );
+}
+
+let morningSettings = normalizeMorningSettings(readJson(STORAGE_KEYS.morningSettings, {}));
+let morningHistory = normalizeMorningHistory(readJson(STORAGE_KEYS.morning, {}), morningSettings);
 
 function applyTheme() {
   document.documentElement.dataset.theme = themeMode;
@@ -1083,7 +1472,7 @@ function applyTheme() {
 
 function toggleTheme() {
   themeMode = themeMode === 'dark' ? 'light' : 'dark';
-  localStorage.setItem('coz_theme', themeMode);
+  writeText(STORAGE_KEYS.theme, themeMode);
   applyTheme();
 }
 
@@ -1105,10 +1494,23 @@ function todayKey() {
   return `${year}-${month}-${day}`;
 }
 
+function refreshTodayDone({migrateLegacy = false} = {}) {
+  const key = todayKey();
+  if (migrateLegacy && (!history[key] || !history[key].length) && done.size) {
+    history[key] = [...done].sort((a,b) => a - b);
+  }
+  done = new Set(normalizeIndexArray(history[key] || []));
+}
+
+refreshTodayDone({migrateLegacy: true});
+
 function save() {
-  localStorage.setItem('coz_done', JSON.stringify([...done]));
-  localStorage.setItem('coz_history', JSON.stringify(history));
-  localStorage.setItem('coz_log', JSON.stringify(declarationLog));
+  const key = todayKey();
+  if (done.size) history[key] = [...done].sort((a,b) => a - b);
+  else delete history[key];
+  writeText(STORAGE_KEYS.done, JSON.stringify([...done]));
+  writeText(STORAGE_KEYS.history, JSON.stringify(history));
+  writeText(STORAGE_KEYS.log, JSON.stringify(declarationLog));
 }
 
 function nowParts() {
@@ -1139,19 +1541,240 @@ function addLogEntry(i, action, source) {
 }
 
 function recordToday(i, source = 'manual') {
+  if (!isDeclarationIndex(i)) return false;
   const key = todayKey();
   const list = new Set(history[key] || []);
+  const wasNew = !list.has(i);
   list.add(i);
   history[key] = [...list].sort((a,b) => a - b);
-  addLogEntry(i, 'declared', source);
+  done.add(i);
+  if (i === 0) {
+    getMorningEntry().tasks.declaration = true;
+    saveMorning();
+  }
+  if (wasNew) addLogEntry(i, 'declared', source);
+  return wasNew;
 }
 
 function unrecordToday(i, source = 'manual') {
+  if (!isDeclarationIndex(i)) return false;
   const key = todayKey();
-  if (!history[key]) return;
+  if (!history[key] || !history[key].includes(i)) return false;
   history[key] = history[key].filter(x => x !== i);
   if (!history[key].length) delete history[key];
+  done.delete(i);
+  if (i === 0) {
+    getMorningEntry().tasks.declaration = false;
+    saveMorning();
+  }
   addLogEntry(i, 'undone', source);
+  return true;
+}
+
+function getMorningEntry() {
+  const key = todayKey();
+  if (!morningHistory[key]) {
+    morningHistory[key] = normalizeMorningEntry(key, {}, morningSettings);
+  }
+  return morningHistory[key];
+}
+
+function saveMorning() {
+  const entry = getMorningEntry();
+  entry.updatedAt = new Date().toISOString();
+  writeText(STORAGE_KEYS.morningSettings, JSON.stringify(morningSettings));
+  writeText(STORAGE_KEYS.morning, JSON.stringify(morningHistory));
+}
+
+function timeToMinutes(value) {
+  if (!/^\d{2}:\d{2}$/.test(value || '')) return null;
+  const [hours, minutes] = value.split(':').map(Number);
+  return hours * 60 + minutes;
+}
+
+function getDepartureState(entry) {
+  const departure = timeToMinutes(entry.departureTime);
+  const target = timeToMinutes(entry.targetLeave);
+  if (departure === null) return {kind:'open', text:'Not logged'};
+  if (target === null) return {kind:'open', text:'Left ' + entry.departureTime};
+  const diff = target - departure;
+  if (diff >= 0) return {kind:'on-time', text: diff === 0 ? 'On time' : diff + 'm early'};
+  return {kind:'late', text: Math.abs(diff) + 'm late'};
+}
+
+function isMorningTaskDone(entry, taskId) {
+  if (taskId === 'declaration') return Boolean(entry.tasks.declaration || (entry.date === todayKey() && done.has(0)));
+  if (taskId === 'pushups') return entry.pushups > 0;
+  if (taskId === 'departed') return getDepartureState(entry).kind === 'on-time';
+  return Boolean(entry.tasks[taskId]);
+}
+
+function getMorningDoneCount(entry) {
+  return MORNING_TASKS.filter(task => isMorningTaskDone(entry, task.id)).length;
+}
+
+function formatNowTime() {
+  const d = new Date();
+  return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+}
+
+function getMorningMeta(task, entry) {
+  if (task.id === 'pushups') return entry.pushups + '/' + morningSettings.pushupTarget;
+  if (task.id === 'departed') return getDepartureState(entry).text;
+  return task.meta;
+}
+
+function toggleMorningTask(taskId) {
+  const entry = getMorningEntry();
+  if (taskId === 'declaration') {
+    const next = !isMorningTaskDone(entry, taskId);
+    entry.tasks.declaration = next;
+    if (next) recordToday(0, 'morning');
+    else unrecordToday(0, 'morning');
+    save();
+    saveMorning();
+    render();
+    return;
+  }
+  if (taskId === 'pushups') {
+    entry.pushups = entry.pushups > 0 ? 0 : 10;
+    entry.tasks.pushups = entry.pushups > 0;
+    saveMorning();
+    renderMorning();
+    return;
+  }
+  if (taskId === 'departed') {
+    entry.departureTime = entry.departureTime ? '' : formatNowTime();
+    entry.tasks.departed = Boolean(entry.departureTime);
+    saveMorning();
+    renderMorning();
+    return;
+  }
+  entry.tasks[taskId] = !entry.tasks[taskId];
+  saveMorning();
+  renderMorning();
+}
+
+function setPushups(value) {
+  const entry = getMorningEntry();
+  entry.pushups = Math.max(0, Math.min(500, Number.parseInt(value, 10) || 0));
+  entry.tasks.pushups = entry.pushups > 0;
+  saveMorning();
+  renderMorning();
+}
+
+function adjustPushups(amount) {
+  const entry = getMorningEntry();
+  setPushups(entry.pushups + amount);
+}
+
+function setLeaveTarget(value) {
+  if (!/^\d{2}:\d{2}$/.test(value || '')) return;
+  const entry = getMorningEntry();
+  morningSettings.targetLeave = value;
+  entry.targetLeave = value;
+  saveMorning();
+  renderMorning();
+}
+
+function setDepartureTime(value) {
+  const entry = getMorningEntry();
+  entry.departureTime = /^\d{2}:\d{2}$/.test(value || '') ? value : '';
+  entry.tasks.departed = Boolean(entry.departureTime);
+  saveMorning();
+  renderMorning();
+}
+
+function markDepartedNow() {
+  setDepartureTime(formatNowTime());
+}
+
+function setMorningNote(value) {
+  const entry = getMorningEntry();
+  entry.note = String(value || '').slice(0, 220);
+  saveMorning();
+}
+
+function resetMorningToday() {
+  const key = todayKey();
+  const entry = getMorningEntry();
+  const hasData = getMorningDoneCount(entry) || entry.pushups || entry.departureTime || entry.note;
+  if (!hasData) return;
+  if (!confirm("Reset today's morning tracker?")) return;
+  if (done.has(0)) {
+    unrecordToday(0, 'morning_reset');
+    save();
+  }
+  morningHistory[key] = normalizeMorningEntry(key, {}, morningSettings);
+  saveMorning();
+  render();
+}
+
+function renderMorning() {
+  const entry = getMorningEntry();
+  const scoreEl = document.getElementById('morningScore');
+  if (!scoreEl) return;
+  if (done.has(0)) entry.tasks.declaration = true;
+  const doneCount = getMorningDoneCount(entry);
+  const total = MORNING_TASKS.length;
+  const pct = Math.round((doneCount / total) * 100);
+  const departure = getDepartureState(entry);
+  scoreEl.textContent = doneCount + ' / ' + total;
+  document.getElementById('morningStatus').textContent = doneCount === total ? 'Complete' : doneCount ? 'In progress' : 'Not started';
+  document.getElementById('morningFill').style.width = pct + '%';
+  document.getElementById('pushupCount').value = entry.pushups;
+  document.getElementById('leaveTarget').value = entry.targetLeave;
+  document.getElementById('departureTime').value = entry.departureTime;
+  document.getElementById('morningNote').value = entry.note;
+  const statusEl = document.getElementById('departureStatus');
+  statusEl.textContent = departure.text;
+  statusEl.className = 'departure-status ' + departure.kind;
+  document.getElementById('morningSteps').innerHTML = MORNING_TASKS.map(task => {
+    const isDone = isMorningTaskDone(entry, task.id);
+    const lateClass = task.id === 'departed' && departure.kind === 'late' ? ' late' : '';
+    return `<button class="morning-step ${isDone ? 'done' : ''}${lateClass}" type="button" onclick="toggleMorningTask('${task.id}')">
+      <span class="morning-check">${isDone ? '&#10003;' : ''}</span>
+      <span class="morning-step-text">${task.label}</span>
+      <span class="morning-step-meta">${getMorningMeta(task, entry)}</span>
+    </button>`;
+  }).join('');
+}
+
+function exportMorningCsv() {
+  const entry = getMorningEntry();
+  morningHistory[entry.date] = entry;
+  saveMorning();
+  const headers = [
+    'date','score','total','status','pushups','pushup_target','target_leave','departure_time',
+    'departure_status','task_declaration','task_pushups','task_weights','task_shower',
+    'task_care','task_dressed','task_departed','note','updated_at'
+  ];
+  const rows = Object.keys(morningHistory).sort().map(key => {
+    const item = normalizeMorningEntry(key, morningHistory[key], morningSettings);
+    const doneCount = getMorningDoneCount(item);
+    const departure = getDepartureState(item);
+    return {
+      date: key,
+      score: doneCount,
+      total: MORNING_TASKS.length,
+      status: doneCount === MORNING_TASKS.length ? 'complete' : doneCount ? 'in_progress' : 'not_started',
+      pushups: item.pushups,
+      pushup_target: morningSettings.pushupTarget,
+      target_leave: item.targetLeave,
+      departure_time: item.departureTime,
+      departure_status: departure.text,
+      task_declaration: isMorningTaskDone(item, 'declaration') ? 'yes' : 'no',
+      task_pushups: isMorningTaskDone(item, 'pushups') ? 'yes' : 'no',
+      task_weights: isMorningTaskDone(item, 'weights') ? 'yes' : 'no',
+      task_shower: isMorningTaskDone(item, 'shower') ? 'yes' : 'no',
+      task_care: isMorningTaskDone(item, 'care') ? 'yes' : 'no',
+      task_dressed: isMorningTaskDone(item, 'dressed') ? 'yes' : 'no',
+      task_departed: isMorningTaskDone(item, 'departed') ? 'yes' : 'no',
+      note: item.note,
+      updated_at: item.updatedAt
+    };
+  });
+  downloadCsv(`morning-execution-${todayKey()}.csv`, headers, rows);
 }
 
 function getStreak() {
@@ -1198,52 +1821,53 @@ function scrollToDeclarations() {
 }
 
 function updateProgress() {
-  const n = done.size, pct = Math.round((n/100)*100);
+  refreshTodayDone();
+  const n = done.size, pct = Math.round((n/D.length)*100);
   const today = history[todayKey()] || [];
   document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('doneCount').textContent = n + ' / 100 declared';
+  document.getElementById('doneCount').textContent = n + ' / ' + D.length + ' declared today';
   document.getElementById('pctLabel').textContent = pct + '% complete';
-  document.getElementById('remainingCount').textContent = 100 - n;
+  document.getElementById('remainingCount').textContent = D.length - n;
   document.getElementById('todayCount').textContent = today.length;
   document.getElementById('streakCount').textContent = getStreak();
-  document.getElementById('completeBanner').classList.toggle('show', n === 100);
+  document.getElementById('completeBanner').classList.toggle('show', n === D.length);
   updateFocus();
 }
 
 function toggle(i, e) {
   if(e) e.stopPropagation();
+  refreshTodayDone();
   if (done.has(i)) {
-    done.delete(i);
     unrecordToday(i, 'card');
   } else {
-    done.add(i);
     recordToday(i, 'card');
   }
   save(); render();
 }
 
 function markAll() {
+  refreshTodayDone();
   D.forEach((_,i) => {
-    if (!done.has(i)) recordToday(i, 'mark_all');
-    done.add(i);
+    recordToday(i, 'mark_all');
   });
   save(); render();
 }
 
 function declareNext() {
+  refreshTodayDone();
   const next = getFilteredItems().find(d => !done.has(d.i)) || D.map((d,i)=>({...d,i})).find(d => !done.has(d.i));
   if (!next) return;
-  done.add(next.i);
   recordToday(next.i, 'next');
   save(); render();
   scrollToDeclarations();
 }
 
 function resetAll() {
-  if(!confirm('Reset all completed declarations and tracker history?')) return;
+  refreshTodayDone();
+  if(!done.size) return;
+  if(!confirm("Reset today's declarations? Previous days and CSV history will stay saved.")) return;
+  [...done].forEach(i => unrecordToday(i, 'reset_today'));
   done.clear();
-  history = {};
-  declarationLog = [];
   save(); render();
 }
 
@@ -1317,7 +1941,6 @@ function closeModal() {
 
 function declareModal() {
   if (openIndex !== null) {
-    done.add(openIndex);
     recordToday(openIndex, 'modal');
     save(); render();
   }
@@ -1325,7 +1948,6 @@ function declareModal() {
 }
 function undeclareModal() {
   if (openIndex !== null) {
-    done.delete(openIndex);
     unrecordToday(openIndex, 'modal');
     save(); render();
   }
@@ -1337,7 +1959,9 @@ function exportProgress() {
     exportedAt: new Date().toISOString(),
     done: [...done],
     history,
-    declarationLog
+    declarationLog,
+    morningHistory,
+    morningSettings
   });
   navigator.clipboard?.writeText(payload);
   prompt('Progress backup JSON:', payload);
@@ -1348,10 +1972,14 @@ function importProgress() {
   if (!raw) return;
   try {
     const parsed = JSON.parse(raw);
-    done = new Set(Array.isArray(parsed.done) ? parsed.done.filter(n => Number.isInteger(n) && n >= 0 && n < D.length) : []);
-    history = parsed.history && typeof parsed.history === 'object' ? parsed.history : {};
+    done = new Set(normalizeIndexArray(parsed.done));
+    history = normalizeHistory(parsed.history);
     declarationLog = Array.isArray(parsed.declarationLog) ? parsed.declarationLog : [];
+    morningSettings = normalizeMorningSettings(parsed.morningSettings);
+    morningHistory = normalizeMorningHistory(parsed.morningHistory, morningSettings);
+    refreshTodayDone({migrateLegacy: true});
     save(); render();
+    saveMorning();
   } catch {
     alert('That backup could not be read.');
   }
@@ -1360,6 +1988,19 @@ function importProgress() {
 function csvEscape(value) {
   const text = value === null || value === undefined ? '' : String(value);
   return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+}
+
+function downloadCsv(filename, headers, rows) {
+  const csv = [headers.join(','), ...rows.map(row => headers.map(h => csvEscape(row[h])).join(','))].join('\n');
+  const blob = new Blob([csv], {type: 'text/csv;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
 }
 
 function exportLogCsv() {
@@ -1380,20 +2021,12 @@ function exportLogCsv() {
       declaration: d.t
     };
   });
-  const csv = [headers.join(','), ...rows.map(row => headers.map(h => csvEscape(row[h])).join(','))].join('\n');
-  const blob = new Blob([csv], {type: 'text/csv;charset=utf-8'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `declaration-log-${todayKey()}.csv`;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
+  downloadCsv(`declaration-log-${todayKey()}.csv`, headers, rows);
 }
 
 function render() {
   updateProgress();
+  renderMorning();
   const visibleItems = getFilteredItems();
   const sections = activeSection === 'all'
     ? [...new Set(visibleItems.map(d=>d.s))]

@@ -21,6 +21,19 @@ Progress is stored locally per device. If the same person uses both phone and la
 
 Use the app's Backup and Restore buttons to move progress between devices when needed.
 
+## Morning Execution Tracker
+
+The morning tracker resets by date and keeps its daily history in the browser.
+
+Daily workflow:
+
+1. Open the app when you wake up.
+2. Complete the morning checklist honestly.
+3. Log pushups and departure time.
+4. Use `Morning CSV` when you want a spreadsheet export.
+
+Use `morning-execution-log-template.csv` as a manual spreadsheet ledger or import target.
+
 ## 100-Day Spreadsheet Log
 
 Use `100-declarations-log-template.xlsx` as the simple spreadsheet database.

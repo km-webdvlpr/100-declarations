@@ -1,10 +1,11 @@
-const CACHE_NAME = 'daily-declarations-v2';
+const CACHE_NAME = 'daily-declarations-v4';
 const APP_SHELL = [
   './',
   './index.html',
   './declarations%20(1).html',
   './manifest.webmanifest',
-  './icon.svg'
+  './icon.svg',
+  './morning-execution-log-template.csv'
 ];
 
 self.addEventListener('install', event => {
@@ -25,6 +26,18 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put('./index.html', copy));
+          return response;
+        })
+        .catch(() => caches.match('./index.html'))
+    );
+    return;
+  }
   event.respondWith(
     caches.match(event.request).then(cached => {
       if (cached) return cached;
